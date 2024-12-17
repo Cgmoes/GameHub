@@ -8,13 +8,13 @@ namespace GameHub
 {
 	public class MainMenuController
 	{
-		private HangmanObserver hangmanObserver;
-		private MainObserver mainObserver;
+		private FormObserver mainObserver;
+		private ControllerSwitchDel hangmanController;
 
-		public void SetDelegates(HangmanObserver h, MainObserver m) 
+		public void SetDelegates(FormObserver m, ControllerSwitchDel c) 
 		{
-			hangmanObserver = h;
 			mainObserver = m;
+			hangmanController = c;
 		}
 
 		public void MenuInput(GameChoice choice) 
@@ -22,12 +22,14 @@ namespace GameHub
 			switch (choice) 
 			{
 				case GameChoice.Hangman:
-					hangmanObserver();
-					break;
-				case GameChoice.Menu:
-					mainObserver();
+					hangmanController();
 					break;
 			}
+		}
+
+		public void BackToMain() 
+		{
+			mainObserver();
 		}
 	}
 }

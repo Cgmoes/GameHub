@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Creighton\\Desktop\\test\\GameHub.csproj": {}
+    "C:\\Users\\Creighton\\Desktop\\December Project\\GameHub.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Creighton\\Desktop\\test\\GameHub.csproj": {
+    "C:\\Users\\Creighton\\Desktop\\December Project\\GameHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Creighton\\Desktop\\test\\GameHub.csproj",
+        "projectUniqueName": "C:\\Users\\Creighton\\Desktop\\December Project\\GameHub.csproj",
         "projectName": "GameHub",
-        "projectPath": "C:\\Users\\Creighton\\Desktop\\test\\GameHub.csproj",
+        "projectPath": "C:\\Users\\Creighton\\Desktop\\December Project\\GameHub.csproj",
         "packagesPath": "C:\\Users\\Creighton\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Creighton\\Desktop\\test\\obj\\",
+        "outputPath": "C:\\Users\\Creighton\\Desktop\\December Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Creighton\\AppData\\Roaming\\NuGet\\NuGet.Config",

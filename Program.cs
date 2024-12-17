@@ -1,9 +1,8 @@
 namespace GameHub
 {
 	public delegate void InputHandler(GameChoice choice);
-	public delegate void HangmanObserver();
-	public delegate void MainObserver();
-	public delegate void ControllerHandler(GameChoice choice);
+	public delegate void FormObserver();
+	public delegate void ControllerSwitchDel();
 	internal static class Program
 	{
 		/// <summary>
@@ -16,9 +15,11 @@ namespace GameHub
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
 			MainMenuController mainMenuCntrl = new MainMenuController();
+			HangmanController hangmanCntrl = new HangmanController();
 			MainForm main = new MainForm(mainMenuCntrl.MenuInput);
-			HangmanForm hangman = new HangmanForm(mainMenuCntrl.MenuInput);
-			mainMenuCntrl.SetDelegates(hangman.UpdateView, main.ShowForm);
+			HangmanForm hangman = new HangmanForm(hangmanCntrl.MenuInput);
+			mainMenuCntrl.SetDelegates(main.ShowForm, hangmanCntrl.Start);
+			hangmanCntrl.SetDelegates(hangman.UpdateView, mainMenuCntrl.BackToMain);
 
 			Application.Run(main);
 		}
