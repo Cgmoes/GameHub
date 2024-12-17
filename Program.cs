@@ -2,7 +2,9 @@ namespace GameHub
 {
 	public delegate void InputHandler(GameChoice choice);
 	public delegate void FormObserver();
+	public delegate void HangmanObserver(string word, string guess, char[] guessBank, bool correctWord, bool correctGuess, bool isStartup);
 	public delegate void ControllerSwitchDel();
+	public delegate void HangmanGuess(char guess);
 	internal static class Program
 	{
 		/// <summary>
@@ -17,7 +19,7 @@ namespace GameHub
 			MainMenuController mainMenuCntrl = new MainMenuController();
 			HangmanController hangmanCntrl = new HangmanController();
 			MainForm main = new MainForm(mainMenuCntrl.MenuInput);
-			HangmanForm hangman = new HangmanForm(hangmanCntrl.MenuInput);
+			HangmanForm hangman = new HangmanForm(hangmanCntrl.MenuInput, hangmanCntrl.MadeGuess);
 			mainMenuCntrl.SetDelegates(main.ShowForm, hangmanCntrl.Start);
 			hangmanCntrl.SetDelegates(hangman.UpdateView, mainMenuCntrl.BackToMain);
 
