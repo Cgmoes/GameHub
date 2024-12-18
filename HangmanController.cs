@@ -17,6 +17,11 @@ namespace GameHub
 		private static string CORRECT_WORD = "";
 		private static string[] WORD_BANK = new string[] { };
 
+		/// <summary>
+		/// Sets the delegates
+		/// </summary>
+		/// <param name="h">The method in the form</param>
+		/// <param name="c">the method in the main controller</param>
 		public void SetDelegates(HangmanObserver h, ControllerSwitchDel c)
 		{
 			hangmanObs = h;
@@ -46,6 +51,11 @@ namespace GameHub
 			hangmanObs(CORRECT_WORD, new string(guessWord), guesses!, false, true, true);
 		}
 
+		/// <summary>
+		/// Calculates if a guess was correct or not and
+		/// replaces the underline with the correct letter
+		/// </summary>
+		/// <param name="guess">The letter guessed</param>
 		public void MadeGuess(char guess) 
 		{
 			bool goodGuess = false;
@@ -75,6 +85,11 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Determines if a guess is valid
+		/// </summary>
+		/// <param name="guess">The letter to guess</param>
+		/// <returns>Whether or not the guess is valid</returns>
 		public bool ValidGuess(char guess) 
 		{
 			if (guesses!.Contains(guess))
@@ -91,6 +106,9 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Resets all variables for the start of the game
+		/// </summary>
 		public void ResetVariables()
 		{
 			WORD_BANK = File.ReadAllLines("words.txt");

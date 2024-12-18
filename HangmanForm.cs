@@ -19,6 +19,12 @@ namespace GameHub
 		private static string CORRECT_WORD;
 		private string guessedWord;
 		private int lives;
+
+		/// <summary>
+		/// Constructor for form
+		/// </summary>
+		/// <param name="h">Method in the controller for a button click</param>
+		/// <param name="g">method for making a guess</param>
 		public HangmanForm(InputHandler h, HangmanGuess g)
 		{
 			InitializeComponent();
@@ -27,6 +33,15 @@ namespace GameHub
 			lives = 6;
 		}
 
+		/// <summary>
+		/// Updates the view based on the action
+		/// </summary>
+		/// <param name="word">the correct word</param>
+		/// <param name="guess">the currently guessed word</param>
+		/// <param name="bank">the letters already guesssed</param>
+		/// <param name="correctWord">If your guessed word is correct</param>
+		/// <param name="correctLetter">If the letter is correct</param>
+		/// <param name="isStartup">If the form is just starting up</param>
 		public void UpdateView(string word, string guess, char[] bank, bool correctWord, bool correctLetter, bool isStartup)
 		{
 			if (isStartup)
@@ -58,12 +73,22 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Handles action for back button clicked
+		/// </summary>
+		/// <param name="sender">The object signaling the event</param>
+		/// <param name="e">information about the event</param>
 		private void backBtn_Click(object sender, EventArgs e)
 		{
 			Hide();
 			handler(GameChoice.Menu);
 		}
 
+		/// <summary>
+		/// Handles action for guess button clicked
+		/// </summary>
+		/// <param name="sender">The object signaling the event</param>
+		/// <param name="e">information about the event</param>
 		private void makeGuessBtn_Click(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrEmpty(guessTextBox.Text) && char.IsLetter(guessTextBox.Text[0]))
@@ -76,6 +101,9 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Checks if the user has lives
+		/// </summary>
 		private void CheckForLives() 
 		{
 			if (lives == 0) 
@@ -86,6 +114,10 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Draws the hangman picture based on how
+		/// many lives you have left
+		/// </summary>
 		private void DrawCharacter()
 		{
 			using (Graphics g = CreateGraphics())
@@ -139,6 +171,11 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Handles action for drawing on startup
+		/// </summary>
+		/// <param name="sender">The object signaling the event</param>
+		/// <param name="e">information about the event</param>
 		private void HangmanForm_Paint(object sender, PaintEventArgs e)
 		{
 			using (Graphics g = CreateGraphics())

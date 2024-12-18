@@ -31,6 +31,7 @@
 			hangmanBtn = new Button();
 			welcomeLabel = new Label();
 			choicesLabel = new Label();
+			conectFourBtn = new Button();
 			SuspendLayout();
 			// 
 			// hangmanBtn
@@ -66,12 +67,24 @@
 			choicesLabel.TabIndex = 2;
 			choicesLabel.Text = "Game Choices";
 			// 
+			// conectFourBtn
+			// 
+			conectFourBtn.ForeColor = SystemColors.InfoText;
+			conectFourBtn.Location = new Point(79, 259);
+			conectFourBtn.Name = "conectFourBtn";
+			conectFourBtn.Size = new Size(75, 23);
+			conectFourBtn.TabIndex = 3;
+			conectFourBtn.Text = "Connect 4";
+			conectFourBtn.UseVisualStyleBackColor = true;
+			conectFourBtn.Click += conectFourBtn_Click;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Info;
 			ClientSize = new Size(800, 450);
+			Controls.Add(conectFourBtn);
 			Controls.Add(choicesLabel);
 			Controls.Add(welcomeLabel);
 			Controls.Add(hangmanBtn);
@@ -88,5 +101,6 @@
 		private Button hangmanBtn;
 		private Label welcomeLabel;
 		private Label choicesLabel;
+		private Button conectFourBtn;
 	}
 }

@@ -8,7 +8,8 @@ namespace GameHub
 {
 	public enum GameChoice
 	{
+		Menu,
 		Hangman,
-		Menu
+		ConnectFour
 	}
 }

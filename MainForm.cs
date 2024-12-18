@@ -15,9 +15,15 @@ namespace GameHub
 			Hide();
 		}
 
-		public void ShowForm() 
+		public void ShowForm()
 		{
 			Show();
+		}
+
+		private void conectFourBtn_Click(object sender, EventArgs e)
+		{
+			inputHandler(GameChoice.ConnectFour);
+			Hide();
 		}
 	}
 }
