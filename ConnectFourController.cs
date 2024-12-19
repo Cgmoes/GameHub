@@ -45,6 +45,10 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Makes a move by adding the piece to the board
+		/// </summary>
+		/// <param name="column">the column the piece is added to</param>
 		public void MakeMove(int column) 
 		{
 			int rowPlaced = -1;
@@ -58,12 +62,13 @@ namespace GameHub
 				{
 					board[i, column] = toPlace;
 					rowPlaced = i;
-					Debug.WriteLine($"Piece Placed at Row: {i} Column: {column}");
+
+					isWin = CheckForWin();
 					isPlayerOne = !isPlayerOne;
 					break;
 				}
 			}
-			if (CheckForWin()) isWin = true;
+
 			obs(rowPlaced, isWin, isPlayerOne);
 		}
 
@@ -73,6 +78,45 @@ namespace GameHub
 		/// <returns>whether or not the player won</returns>
 		public bool CheckForWin() 
 		{
+			int curPiece;
+			if (isPlayerOne) curPiece = 1;
+			else curPiece = 2;
+
+			// Horizontal check
+			for (int row = 0; row < ROWS; row++)
+			{
+				for (int col = 0; col <= COLUMNS - 4; col++)
+				{
+					if (board[row, col] == curPiece && board[row, col + 1] == curPiece && board[row, col + 2] == curPiece && board[row, col + 3] == curPiece) return true;
+				}
+			}
+
+			// Vertical check
+			for (int col = 0; col < COLUMNS; col++)
+			{
+				for (int row = 0; row <= ROWS - 4; row++)
+				{
+					if (board[row, col] == curPiece && board[row + 1, col] == curPiece && board[row + 2, col] == curPiece && board[row + 3, col] == curPiece) return true;
+				}
+			}
+
+			// Ascending diagonal check
+			for (int row = 3; row < ROWS; row++)
+			{
+				for (int col = 0; col <= COLUMNS - 4; col++)
+				{
+					if (board[row, col] == curPiece && board[row - 1, col + 1] == curPiece && board[row - 2, col + 2] == curPiece && board[row - 3, col + 3] == curPiece) return true;
+				}
+			}
+
+			// Descending diagonal check
+			for (int row = 0; row <= ROWS - 4; row++)
+			{
+				for (int col = 0; col <= COLUMNS - 4; col++)
+				{
+					if (board[row, col] == curPiece && board[row + 1, col + 1] == curPiece && board[row + 2, col + 2] == curPiece && board[row + 3, col + 3] == curPiece) return true;
+				}
+			}
 			return false;
 		}
 

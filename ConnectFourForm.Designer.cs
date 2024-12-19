@@ -79,6 +79,7 @@
 			boardTablePanel.Size = new Size(505, 333);
 			boardTablePanel.TabIndex = 3;
 			boardTablePanel.Click += boardTablePanel_Click;
+			boardTablePanel.Paint += boardTablePanel_Paint;
 			// 
 			// dropPieceBtn
 			// 
@@ -104,6 +105,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			BackColor = SystemColors.AppWorkspace;
 			ClientSize = new Size(800, 450);
 			Controls.Add(turnLabel);
 			Controls.Add(dropPieceBtn);
