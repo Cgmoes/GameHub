@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GameHub
 {
-	public partial class ConnectFourForm : Form
+	public partial class MPConnectFourForm : Form
 	{
 		public InputHandler handler;
 		public PlaceConnectFour placePiece;
@@ -20,7 +20,7 @@ namespace GameHub
 		private bool isPlayerOne;
 		int tempCol = -1;
 
-		public ConnectFourForm(InputHandler i, PlaceConnectFour p)
+		public MPConnectFourForm(InputHandler i, PlaceConnectFour p)
 		{
 			InitializeComponent();
 			handler = i;
@@ -64,7 +64,6 @@ namespace GameHub
 		/// <param name="e">information about the event</param>
 		private void boardTablePanel_Click(object sender, EventArgs e)
 		{
-
 			Point mousePos = boardTablePanel.PointToClient(Cursor.Position);
 			int columnWidth = boardTablePanel.Width / 7;
 			int rowWidth = boardTablePanel.Height / 6;

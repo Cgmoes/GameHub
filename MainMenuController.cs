@@ -10,13 +10,15 @@ namespace GameHub
 	{
 		private MainMenuFormObserver mainObserver;
 		private ControllerSwitchDel hangmanController;
-		private ControllerSwitchDel connectFourController;
+		private ControllerSwitchDel mpConnectFourController;
+		private ControllerSwitchDel spConnectFourController;
 
-		public void SetDelegates(MainMenuFormObserver m, ControllerSwitchDel h, ControllerSwitchDel cf) 
+		public void SetDelegates(MainMenuFormObserver m, ControllerSwitchDel h, ControllerSwitchDel mcf, ControllerSwitchDel spcf) 
 		{
 			mainObserver = m;
 			hangmanController = h;
-			connectFourController = cf;
+			mpConnectFourController = mcf;
+			spConnectFourController = spcf;
 		}
 
 		/// <summary>
@@ -30,8 +32,11 @@ namespace GameHub
 				case GameChoice.Hangman:
 					hangmanController();
 					break;
-				case GameChoice.ConnectFour:
-					connectFourController();
+				case GameChoice.TwoPlayerConnectFour:
+					mpConnectFourController();
+					break;
+				case GameChoice.SinglePlayerConnectFour:
+					spConnectFourController();
 					break;
 			}
 		}

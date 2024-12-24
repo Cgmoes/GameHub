@@ -20,9 +20,15 @@ namespace GameHub
 			Show();
 		}
 
-		private void conectFourBtn_Click(object sender, EventArgs e)
+		private void mpConnectFourBtn_Click(object sender, EventArgs e)
 		{
-			inputHandler(GameChoice.ConnectFour);
+			inputHandler(GameChoice.TwoPlayerConnectFour);
+			Hide();
+		}
+
+		private void spConnectFourBtn_Click(object sender, EventArgs e)
+		{
+			inputHandler(GameChoice.SinglePlayerConnectFour);
 			Hide();
 		}
 	}

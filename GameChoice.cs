@@ -10,6 +10,7 @@ namespace GameHub
 	{
 		Menu,
 		Hangman,
-		ConnectFour
+		TwoPlayerConnectFour,
+		SinglePlayerConnectFour
 	}
 }

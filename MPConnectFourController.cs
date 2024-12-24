@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameHub
 {
-	public class ConnectFourController
+	public class MPConnectFourController
 	{
 		private const int ROWS = 6;
 		private const int COLUMNS = 7;

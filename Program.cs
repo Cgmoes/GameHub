@@ -4,9 +4,11 @@ namespace GameHub
 	public delegate void MainMenuFormObserver();
 	public delegate void HangmanObserver(string word, string guess, char[] guessBank, bool correctWord, bool correctGuess, bool isStartup);
 	public delegate void ConnectFourObserver(int rowPlaced, bool isWin, bool isPlayerOne);
+	public delegate void AiConnectFourObserver(int rowPlaced, int colPlaced, bool isWin, bool isPlayerOne);
 	public delegate void PlaceConnectFour(int column);
 	public delegate void ControllerSwitchDel();
 	public delegate void HangmanGuess(char guess);
+	public delegate void AiPlaceConnectFour();
 	internal static class Program
 	{
 		/// <summary>
@@ -21,15 +23,18 @@ namespace GameHub
 
 			MainMenuController mainMenuCntrl = new MainMenuController();
 			HangmanController hangmanCntrl = new HangmanController();
-			ConnectFourController connectFourCntrl = new ConnectFourController();
+			MPConnectFourController mpConnectFourCntrl = new MPConnectFourController();
+			SPConnectFourController spConnectFourCntrl = new SPConnectFourController();
 
 			MainForm mainForm = new MainForm(mainMenuCntrl.MenuInput);
 			HangmanForm hangmanForm = new HangmanForm(hangmanCntrl.MenuInput, hangmanCntrl.MadeGuess);
-			ConnectFourForm connectFourForm = new ConnectFourForm(connectFourCntrl.MenuInput, connectFourCntrl.MakeMove);
+			MPConnectFourForm mpConnectFourForm = new MPConnectFourForm(mpConnectFourCntrl.MenuInput, mpConnectFourCntrl.MakeMove);
+			SPConnectFourForm spConnectFourForm = new SPConnectFourForm(spConnectFourCntrl.MenuInput, spConnectFourCntrl.MakeMove, spConnectFourCntrl.AiMove);
 
-			mainMenuCntrl.SetDelegates(mainForm.ShowForm, hangmanCntrl.Start, connectFourCntrl.Start);
+			mainMenuCntrl.SetDelegates(mainForm.ShowForm, hangmanCntrl.Start, mpConnectFourCntrl.Start, spConnectFourCntrl.Start);
 			hangmanCntrl.SetDelegates(hangmanForm.UpdateView, mainMenuCntrl.BackToMain);
-			connectFourCntrl.SetDelegates(connectFourForm.UpdateView, mainMenuCntrl.BackToMain);
+			mpConnectFourCntrl.SetDelegates(mpConnectFourForm.UpdateView, mainMenuCntrl.BackToMain);
+			spConnectFourCntrl.SetDelegates(spConnectFourForm.UpdateView, mainMenuCntrl.BackToMain, spConnectFourForm.UpdateViewFromAi);
 
 			Application.Run(mainForm);
 		}

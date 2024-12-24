@@ -31,15 +31,16 @@
 			hangmanBtn = new Button();
 			welcomeLabel = new Label();
 			choicesLabel = new Label();
-			conectFourBtn = new Button();
+			mpConnectFourBtn = new Button();
+			spConnectFourBtn = new Button();
 			SuspendLayout();
 			// 
 			// hangmanBtn
 			// 
 			hangmanBtn.ForeColor = SystemColors.InfoText;
-			hangmanBtn.Location = new Point(79, 214);
+			hangmanBtn.Location = new Point(54, 214);
 			hangmanBtn.Name = "hangmanBtn";
-			hangmanBtn.Size = new Size(75, 23);
+			hangmanBtn.Size = new Size(124, 23);
 			hangmanBtn.TabIndex = 0;
 			hangmanBtn.Text = "Hangman";
 			hangmanBtn.UseVisualStyleBackColor = true;
@@ -67,16 +68,27 @@
 			choicesLabel.TabIndex = 2;
 			choicesLabel.Text = "Game Choices";
 			// 
-			// conectFourBtn
+			// mpConnectFourBtn
 			// 
-			conectFourBtn.ForeColor = SystemColors.InfoText;
-			conectFourBtn.Location = new Point(79, 259);
-			conectFourBtn.Name = "conectFourBtn";
-			conectFourBtn.Size = new Size(75, 23);
-			conectFourBtn.TabIndex = 3;
-			conectFourBtn.Text = "Connect 4";
-			conectFourBtn.UseVisualStyleBackColor = true;
-			conectFourBtn.Click += conectFourBtn_Click;
+			mpConnectFourBtn.ForeColor = SystemColors.InfoText;
+			mpConnectFourBtn.Location = new Point(54, 243);
+			mpConnectFourBtn.Name = "mpConnectFourBtn";
+			mpConnectFourBtn.Size = new Size(124, 23);
+			mpConnectFourBtn.TabIndex = 3;
+			mpConnectFourBtn.Text = "2 Player Connect 4";
+			mpConnectFourBtn.UseVisualStyleBackColor = true;
+			mpConnectFourBtn.Click += mpConnectFourBtn_Click;
+			// 
+			// spConnectFourBtn
+			// 
+			spConnectFourBtn.ForeColor = SystemColors.InfoText;
+			spConnectFourBtn.Location = new Point(54, 272);
+			spConnectFourBtn.Name = "spConnectFourBtn";
+			spConnectFourBtn.Size = new Size(124, 23);
+			spConnectFourBtn.TabIndex = 4;
+			spConnectFourBtn.Text = "1 Player Connect 4";
+			spConnectFourBtn.UseVisualStyleBackColor = true;
+			spConnectFourBtn.Click += spConnectFourBtn_Click;
 			// 
 			// MainForm
 			// 
@@ -84,7 +96,8 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Info;
 			ClientSize = new Size(800, 450);
-			Controls.Add(conectFourBtn);
+			Controls.Add(spConnectFourBtn);
+			Controls.Add(mpConnectFourBtn);
 			Controls.Add(choicesLabel);
 			Controls.Add(welcomeLabel);
 			Controls.Add(hangmanBtn);
@@ -101,6 +114,7 @@
 		private Button hangmanBtn;
 		private Label welcomeLabel;
 		private Label choicesLabel;
-		private Button conectFourBtn;
+		private Button mpConnectFourBtn;
+		private Button spConnectFourBtn;
 	}
 }
