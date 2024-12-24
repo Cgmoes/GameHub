@@ -21,6 +21,12 @@ namespace GameHub
 		private bool isAi;
 		int tempCol = -1;
 
+		/// <summary>
+		/// Constructor for the form
+		/// </summary>
+		/// <param name="i">the input handler method</param>
+		/// <param name="p">the player place piece method in controller</param>
+		/// <param name="ai">the ai place piece method in controller</param>
 		public SPConnectFourForm(InputHandler i, PlaceConnectFour p, AiPlaceConnectFour ai)
 		{
 			InitializeComponent();
@@ -29,6 +35,12 @@ namespace GameHub
 			aiPlace = ai;
 		}
 
+		/// <summary>
+		/// Updates the view after the player makes a move
+		/// </summary>
+		/// <param name="rowPlaced">the row the piece was placed in</param>
+		/// <param name="isWin">if it is a winning move</param>
+		/// <param name="player">the player</param>
 		public void UpdateView(int rowPlaced, bool isWin, bool player)
 		{
 			isAi = !player;
@@ -45,6 +57,13 @@ namespace GameHub
 			else Show();
 		}
 
+		/// <summary>
+		/// Updates the view after the ai makes a move
+		/// </summary>
+		/// <param name="rowPlaced">the row the piece was placed in</param>
+		/// <param name="colPlaced">the column it was placed in</param>
+		/// <param name="isWin">if it is a winning move</param>
+		/// <param name="player">the player</param>
 		public void UpdateViewFromAi(int rowPlaced, int colPlaced, bool isWin, bool player)
 		{
 			isAi = player;
@@ -60,6 +79,10 @@ namespace GameHub
 			else Show();
 		}
 
+		/// <summary>
+		/// Clears the temporary piece drawing from the form
+		/// </summary>
+		/// <param name="col">the column the piece was in</param>
 		private void ClearTempPiece(int col)
 		{
 			using (Graphics g = CreateGraphics()) //Draws the temporary piece to show where it is being placed
@@ -78,12 +101,22 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Handles event if back button is clicked
+		/// </summary>
+		/// <param name="sender">the object signaling the event</param>
+		/// <param name="e">information about the event</param>
 		private void backBtn_Click(object sender, EventArgs e)
 		{
 			Hide();
 			handler(GameChoice.Menu);
 		}
 
+		/// <summary>
+		/// Handles event if drop piece button is clicked
+		/// </summary>
+		/// <param name="sender">the object signaling the event</param>
+		/// <param name="e">information about the event</param>
 		private async void dropPieceBtn_Click(object sender, EventArgs e)
 		{
 			placePiece(columnClicked);
@@ -91,6 +124,11 @@ namespace GameHub
 			aiPlace();
 		}
 
+		/// <summary>
+		/// Handles event if the table is being painted
+		/// </summary>
+		/// <param name="sender">the object signaling the event</param>
+		/// <param name="e">information about the event</param>
 		private void boardTablePanel_Paint(object sender, PaintEventArgs e)
 		{
 			using (Graphics g = boardTablePanel.CreateGraphics())
@@ -114,6 +152,11 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Handles event if the table is clicked
+		/// </summary>
+		/// <param name="sender">the object signaling the event</param>
+		/// <param name="e">information about the event</param>
 		private void boardTablePanel_Click(object sender, EventArgs e)
 		{
 			Point mousePos = boardTablePanel.PointToClient(Cursor.Position);

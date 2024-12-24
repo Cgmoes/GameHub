@@ -13,6 +13,13 @@ namespace GameHub
 		private ControllerSwitchDel mpConnectFourController;
 		private ControllerSwitchDel spConnectFourController;
 
+		/// <summary>
+		/// Sets the delegates of the main menu controller
+		/// </summary>
+		/// <param name="m">the observer method for main form</param>
+		/// <param name="h">the controller for hangman</param>
+		/// <param name="mcf">the controller for multiplayer connect 4</param>
+		/// <param name="spcf">the controller for singleplayer connect 4</param>
 		public void SetDelegates(MainMenuFormObserver m, ControllerSwitchDel h, ControllerSwitchDel mcf, ControllerSwitchDel spcf) 
 		{
 			mainObserver = m;

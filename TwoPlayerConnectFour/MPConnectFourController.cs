@@ -16,6 +16,11 @@ namespace GameHub
 		private ControllerSwitchDel cntrlDel;
 		private ConnectFourObserver obs;
 
+		/// <summary>
+		/// Sets the delegates for the controller
+		/// </summary>
+		/// <param name="cfo">method in the form to observe</param>
+		/// <param name="c">the main controller</param>
 		public void SetDelegates(ConnectFourObserver cfo, ControllerSwitchDel c)
 		{
 			obs = cfo;

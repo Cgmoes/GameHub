@@ -19,6 +19,12 @@ namespace GameHub
 		private ConnectFourObserver obs;
 		private AiConnectFourObserver obsAi;
 
+		/// <summary>
+		/// Sets the delegates for the controller
+		/// </summary>
+		/// <param name="cfo">the observer of the form</param>
+		/// <param name="c">the method in the main controller</param>
+		/// <param name="ai">the observer for the ai method</param>
 		public void SetDelegates(ConnectFourObserver cfo, ControllerSwitchDel c, AiConnectFourObserver ai)
 		{
 			obs = cfo;
@@ -67,6 +73,7 @@ namespace GameHub
 		/// <summary>
 		/// Checks for a win
 		/// </summary>
+		/// <param name="player">The player you are checking for a win</param>
 		/// <returns>whether or not the player won</returns>
 		public bool CheckForWin(int player)
 		{
@@ -123,7 +130,7 @@ namespace GameHub
 		/// Handles action if the player placed a piece
 		/// </summary>
 		/// <param name="column">the column the piece was placed</param>
-		/// <returns></returns>
+		/// <returns>if the move was successful</returns>
 		public bool PlayerMove(int column)
 		{
 			lock (this)
@@ -148,6 +155,9 @@ namespace GameHub
 		}
 
 		#region Ai Methods
+		/// <summary>
+		/// Handles the ai move
+		/// </summary>
 		public void AiMove()
 		{
 			lock (this)
@@ -167,6 +177,13 @@ namespace GameHub
 			}
 		}
 
+		/// <summary>
+		/// Gets the next valid row available
+		/// starting from the bottom
+		/// </summary>
+		/// <param name="board">the board to check</param>
+		/// <param name="column">the column you want to place in</param>
+		/// <returns>the next valid row</returns>
 		private int GetNextValidRow(int[,] board, int column)
 		{
 			for (int row = ROWS - 1; row >= 0; row--)
@@ -176,6 +193,12 @@ namespace GameHub
 			return -1;
 		}
 
+		/// <summary>
+		/// Evaluates the weight of a line
+		/// </summary>
+		/// <param name="playerCount">how many pieces are in a row for you</param>
+		/// <param name="opponentCount">how many pieces are in a row for your opponent</param>
+		/// <returns>the weighted value of the line</returns>
 		private int EvaluateLine(int playerCount, int opponentCount)
 		{
 			if (playerCount == 4) return 1000; // AI wins
@@ -192,6 +215,11 @@ namespace GameHub
 			return 0; // Neutral
 		}
 
+		/// <summary>
+		/// Evaluates the board and gives a score for a given move
+		/// </summary>
+		/// <param name="board">the board to evaluate</param>
+		/// <returns>the score</returns>
 		private int EvaluateBoard(int[,] board)
 		{
 			int score = 0;
@@ -254,6 +282,16 @@ namespace GameHub
 			return score;
 		}
 
+		/// <summary>
+		/// Algorithm to determine the ai move. Uses the minimaxx algorithm to maximize
+		/// and minimize moves, calculating the best move to make
+		/// </summary>
+		/// <param name="board">the board to search</param>
+		/// <param name="depth">how many moves ahead you want it to see</param>
+		/// <param name="alpha">alpha integer</param>
+		/// <param name="beta">beta integer</param>
+		/// <param name="isMaximizingPlayer">if the player is maximizing (true) or minimizing (false)</param>
+		/// <returns>a tuple of the column and its value in integers</returns>
 		private (int, int) Minimax(int[,] board, int depth, int alpha, int beta, bool isMaximizingPlayer)
 		{
 			if (depth == 0 || CheckForWin(1) || CheckForWin(2)) return (EvaluateBoard(board), -1);

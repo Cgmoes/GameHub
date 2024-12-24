@@ -20,6 +20,11 @@ namespace GameHub
 		private bool isPlayerOne;
 		int tempCol = -1;
 
+		/// <summary>
+		/// Constructor for the form
+		/// </summary>
+		/// <param name="i">method in controller to handle inputs</param>
+		/// <param name="p">method in controller to handle if a piece is placed</param>
 		public MPConnectFourForm(InputHandler i, PlaceConnectFour p)
 		{
 			InitializeComponent();
@@ -38,6 +43,12 @@ namespace GameHub
 			handler(GameChoice.Menu);
 		}
 
+		/// <summary>
+		/// Updates the form after a move is made
+		/// </summary>
+		/// <param name="rowPlaced">the row the piece was placed in</param>
+		/// <param name="isWin">if it is a winning move</param>
+		/// <param name="player">the player</param>
 		public void UpdateView(int rowPlaced, bool isWin, bool player)
 		{
 			isPlayerOne = player;
@@ -76,6 +87,10 @@ namespace GameHub
 			DrawPiece(rowClicked, columnClicked, true);
 		}
 
+		/// <summary>
+		/// Clears the temporary piece off the form
+		/// </summary>
+		/// <param name="col">the column the piece was in</param>
 		private void ClearTempPiece(int col)
 		{
 			using (Graphics g = boardTablePanel.CreateGraphics())
