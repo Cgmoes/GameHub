@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Creighton\\Desktop\\VS Game Project\\GameHub.csproj",
+      "projectUniqueName": "C:\\Users\\Creighton\\Desktop\\GameHub\\GameHub.csproj",
       "projectName": "GameHub",
-      "projectPath": "C:\\Users\\Creighton\\Desktop\\VS Game Project\\GameHub.csproj",
+      "projectPath": "C:\\Users\\Creighton\\Desktop\\GameHub\\GameHub.csproj",
       "packagesPath": "C:\\Users\\Creighton\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Creighton\\Desktop\\VS Game Project\\obj\\",
+      "outputPath": "C:\\Users\\Creighton\\Desktop\\GameHub\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Creighton\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -154,7 +154,6 @@ namespace GameHub
 			{
 				bool isWin = false;
 
-				// Call Minimax with alpha-beta pruning to get the best column
 				(int bestScore, int bestColumn) = Minimax(board, 3, int.MinValue, int.MaxValue, true);
 
 				if (bestColumn != -1)

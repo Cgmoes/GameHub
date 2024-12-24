@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -60,19 +62,19 @@ namespace GameHub
 
 		private void ClearTempPiece(int col)
 		{
-			using (Graphics g = boardTablePanel.CreateGraphics())
+			using (Graphics g = CreateGraphics()) //Draws the temporary piece to show where it is being placed
 			{
 				int cellWidth = boardTablePanel.Width / boardTablePanel.ColumnCount;
 				int cellHeight = boardTablePanel.Height / boardTablePanel.RowCount;
 
-				// Calculate the position of the rectangle to clear
-				int x = (col * cellWidth + cellWidth / 10) + 5; // Offset for padding
-				int y = (cellHeight / 10) + 2;
+				// Calculate the position of the circle
+				int x = (col * cellWidth + (cellWidth - Math.Min(cellWidth, cellHeight)) / 2) + (cellWidth * 2) - 8;
+				int y = cellHeight + (cellHeight - Math.Min(cellWidth, cellHeight)) / 2;
+
 				int diameter = Math.Min(cellWidth, cellHeight) - 2 * (cellWidth / 10); // Ensure circle fits
 				Color c = this.BackColor;
 				SolidBrush brush = new SolidBrush(c);
-				// Clear the cell by drawing a rectangle matching the board background
-				g.FillEllipse(brush, x, y, diameter, diameter);
+				g.FillEllipse(brush, x, 40, diameter, diameter);
 			}
 		}
 
@@ -150,7 +152,22 @@ namespace GameHub
 					if (!isAi) g.FillEllipse(Brushes.Red, x, y - 1, diameter, diameter);
 					else g.FillEllipse(Brushes.Yellow, x, y - 1, diameter, diameter);
 				}
-				else g.FillEllipse(Brushes.Pink, x, 7, diameter, diameter);
+			}
+			using (Graphics g = CreateGraphics()) //Draws the temporary piece to show where it is being placed
+			{
+				int cellWidth = boardTablePanel.Width / boardTablePanel.ColumnCount;
+				int cellHeight = boardTablePanel.Height / boardTablePanel.RowCount;
+
+				// Calculate the position of the circle
+				int x = (column * cellWidth + (cellWidth - Math.Min(cellWidth, cellHeight)) / 2) + (cellWidth * 2)-8;
+				int y = row * cellHeight + (cellHeight - Math.Min(cellWidth, cellHeight)) / 2;
+
+				int diameter = Math.Min(cellWidth, cellHeight) - 2 * (cellWidth / 10); // Ensure circle fits
+
+				if (isTempPlaced) 
+				{
+					g.FillEllipse(Brushes.Pink, x, 40, diameter, diameter);
+				}
 			}
 		}
 	}
