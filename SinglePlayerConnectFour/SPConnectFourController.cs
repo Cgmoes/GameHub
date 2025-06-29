@@ -164,7 +164,7 @@ namespace GameHub
 			{
 				bool isWin = false;
 
-				(int bestScore, int bestColumn) = Minimax(board, 3, int.MinValue, int.MaxValue, true);
+				(int bestScore, int bestColumn) = Minimax(board, 5, int.MinValue, int.MaxValue, true);
 
 				if (bestColumn != -1)
 				{
